@@ -1,0 +1,25 @@
+<ul
+  class="timeline"
+  [class.timeline-right]="Mode === 'right'"
+  [class.timeline-alternate]="Mode === 'alternate'"
+  [class.timeline-pending]="!!Pending"
+  [class.timeline-reverse]="Reverse"
+  #timeline>
+  <!-- User inserted timeline dots. -->
+  <ng-content></ng-content>
+  <!-- Pending dot. -->
+  <li *ngIf="Pending" class="timeline-item timeline-item-pending">
+    <div class="timeline-item-tail"></div>
+    <div class="timeline-item-head timeline-item-head-custom timeline-item-head-blue">
+      <ng-container *StringTemplateOutlet="PendingDot">
+        {{ PendingDot }}
+        <!-- <i *ngIf="!PendingDot" -icon Type="loading"></i> -->
+      </ng-container>
+    </div>
+    <div class="timeline-item-content">
+      <ng-container *StringTemplateOutlet="Pending">
+        {{ isPendingBoolean ? '' : Pending }}
+      </ng-container>
+    </div>
+  </li>
+</ul>

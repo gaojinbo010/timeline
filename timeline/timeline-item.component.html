@@ -1,0 +1,20 @@
+<li
+  class="timeline-item"
+  [class.timeline-item-right]="position === 'right'"
+  [class.timeline-item-left]="position === 'left'"
+  [class.timeline-item-last]="isLast"
+  #liTemplate>
+  <div class="timeline-item-tail"></div>
+  <div
+    class="timeline-item-head"
+    [class.timeline-item-head-red]="Color === 'red'"
+    [class.timeline-item-head-blue]="Color === 'blue'"
+    [class.timeline-item-head-green]="Color === 'green'"
+    [class.timeline-item-head-gray]="Color === 'gray'"
+    [class.timeline-item-head-custom]="!!Dot">
+    <ng-container *StringTemplateOutlet="Dot">{{ Dot }}</ng-container>
+  </div>
+  <div class="timeline-item-content">
+    <ng-content></ng-content>
+  </div>
+</li>
